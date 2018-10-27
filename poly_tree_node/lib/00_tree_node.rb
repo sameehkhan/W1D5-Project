@@ -65,11 +65,11 @@ class PolyTreeNode
       arr = [self]
       # debugger
       until arr.empty?
-        if arr.first == target_value
-          return arr.first
+        node = arr.shift
+        if node.value == target_value
+          return node
         else 
-          node = arr.shift
-          arr = arr + node.children if node.children.empty?
+          arr = arr + node.children
         end
       end
       nil
