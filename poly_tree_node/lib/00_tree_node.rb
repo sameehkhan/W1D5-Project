@@ -45,6 +45,46 @@ class PolyTreeNode
       end 
     end
     
+    def dfs(target_value)
+      
+      return self if self.value == target_value
+      # return nil if self.children.empty?
+      
+    
+      
+      self.children.each do |el|
+        result = el.dfs(target_value)
+        
+        return result if result 
+        
+      end 
+      nil
+    end 
+    
+    def bfs(target_value)
+      arr = [self]
+      # debugger
+      until arr.empty?
+        if arr.first == target_value
+          return arr.first
+        else 
+          node = arr.shift
+          arr = arr + node.children if node.children.empty?
+        end
+      end
+      nil
+    end
+      
+
+    
+    
+    
+    
+    
+    
+    
+    
     attr_reader :parent, :children, :value
     
 end
+
